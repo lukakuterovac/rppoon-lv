@@ -2,9 +2,9 @@ namespace Iterator
 {
     interface IAbstractIterator
     {
-        Note First();
-        Note Next();
+        Product First();
+        Product Next();
         bool IsDone { get; }
-        Note Current { get; }
+        Product Current { get; }
     }
 }

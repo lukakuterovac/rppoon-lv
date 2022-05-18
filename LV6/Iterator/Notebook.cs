@@ -1,6 +1,6 @@
 namespace Iterator
 {
-    class Notebook : IAbstractCollection
+    class Notebook //: IAbstractCollection
     {
         private List<Note> notes;
         public Notebook()
@@ -25,6 +25,6 @@ namespace Iterator
         }
         public int Count { get { return this.notes.Count; } }
         public Note this[int index] { get { return this.notes[index]; } }
-        public IAbstractIterator GetIterator() { return new Iterator(this); }
+        // public IAbstractIterator GetIterator() { return new Iterator(this); }
     }
 }
