@@ -6,7 +6,10 @@ namespace Memento
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Task 3:");
             Task3();
+            Console.WriteLine("\n\nTask 4:");
+            Task4();
         }
         static void Task3()
         {
@@ -31,6 +34,28 @@ namespace Memento
 
             item.RestoreState(careTaker.PreviousState);
             Console.WriteLine("After 2. restore: \n" + item);
+        }
+        static void Task4()
+        {
+            BankAccount bankAccount = new BankAccount("Luka", "Vinkovci", 20.00m);
+            BankAccountCareTaker careTaker = new BankAccountCareTaker();
+            careTaker.PreviousState = bankAccount.StoreState();
+            Console.WriteLine("Before adding funds: ");
+            PrintBankAccount(bankAccount);
+            careTaker.PreviousState = bankAccount.StoreState();
+
+            bankAccount.UpdateBalance(700);
+            Console.WriteLine("After adding funds: ");
+            PrintBankAccount(bankAccount);
+
+            bankAccount.RestoreState(careTaker.PreviousState);
+            Console.WriteLine("After restoring previous state: ");
+            PrintBankAccount(bankAccount);
+        }
+
+        static void PrintBankAccount(BankAccount account)
+        {
+            Console.WriteLine(account.OwnerName + ", " + account.OwnerAddress + "\nBalance: " + account.Balance);
         }
     }
 }
