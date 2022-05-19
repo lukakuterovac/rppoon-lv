@@ -8,6 +8,8 @@
             Task5();
             Console.WriteLine("\n\nTask 6: ");
             Task6();
+            Console.WriteLine("\n\nTask 7: ");
+            Task7();
         }
         static void Task5()
         {
@@ -26,6 +28,20 @@
             StringLowerCaseChecker lowerCaseChecker = new StringLowerCaseChecker();
             upperCaseChecker.SetNext(lowerCaseChecker);
             Console.WriteLine(digitChecker.Check("ABCd123"));
+        }
+        static void Task7()
+        {
+            StringDigitChecker digitChecker = new StringDigitChecker();
+            PasswordValidator passwordValidator = new PasswordValidator(digitChecker);
+            StringUpperCaseChecker upperCaseChecker = new StringUpperCaseChecker();
+            StringLowerCaseChecker lowerCaseChecker = new StringLowerCaseChecker();
+            StringLengthChecker lengthChecker = new StringLengthChecker(6);
+            passwordValidator.SetNextChecker(upperCaseChecker);
+            passwordValidator.SetNextChecker(lowerCaseChecker);
+            Console.WriteLine(passwordValidator.Validate("Ab12"));
+            passwordValidator.SetNextChecker(lengthChecker);
+            Console.WriteLine(passwordValidator.Validate("Ab12"));
+            Console.WriteLine(passwordValidator.Validate("Abcde12"));
         }
     }
 }
