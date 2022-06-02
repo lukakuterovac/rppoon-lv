@@ -8,6 +8,7 @@ namespace Strategy
         private double[] sequence;
         private int sequenceSize;
         private SortStrategy sortStrategy;
+        private ISearchStrategy searchStrategy;
         public NumberSequence(int sequenceSize)
         {
             this.sequenceSize = sequenceSize;
@@ -25,7 +26,12 @@ namespace Strategy
         {
             this.sortStrategy = strategy;
         }
+        public void SetSearchStrategy(ISearchStrategy strategy)
+        {
+            this.searchStrategy = strategy;
+        }
         public void Sort() { this.sortStrategy.Sort(this.sequence); }
+        public void Search(double element) { this.searchStrategy.Search(element, this.sequence); }
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
